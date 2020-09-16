@@ -15,7 +15,7 @@ jobs:
       - name: Make the output directories
         run: mkdir a4 letter
       - name: Build
-        uses: docker://jeandeaual/lilypond:2.20.0
+        uses: docker://jeandeaual/lilypond:2.18.2
         with:
           args: lilypond -dno-point-and-click -dembed-source-code -dmidi-extension="midi" -o a4 test.ly
       - name: Build
