@@ -12,12 +12,23 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      - name: Make the output directories
+        run: mkdir a4 letter
       - name: Build
         uses: docker://jeandeaual/lilypond:2.20.0
         with:
-          args: lilypond -dno-point-and-click -dmidi-extension='"midi"' -dembed-source-code test.ly
-      - name: Upload artifact
+          args: lilypond -dno-point-and-click -dembed-source-code -dmidi-extension="midi" -dpaper-size='"a4"' -o a4 test.ly
+      - name: Build
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond -dno-point-and-click -dembed-source-code -dmidi-extension="midi" -dpaper-size='"letter"' -o letter test.ly
+      - name: Upload A4 artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: artifact
-          path: .
+          name: a4
+          path: a4
+      - name: Upload Letter artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: letter
+          path: letter
