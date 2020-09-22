@@ -7,7 +7,7 @@
       (async () => {
         const user = 'jeandeaual';
         const repo = 'testly';
-        for (const format of ['a4', 'letter', 'svg']) {
+        for (const format of ['a4', 'letter', 'midi', 'svg']) {
           const contents_api_url = `https://api.github.com/repos/${user}/${repo}/contents/${format}?ref=gh-pages`;
           const response = await fetch(contents_api_url);
           const data = await response.json();
@@ -24,8 +24,6 @@
                 let img = document.createElement('img');
                 img.setAttribute('src', file.path);
                 img.setAttribute('alt', file.name);
-                // img.setAttribute('height', 800);
-                // img.setAttribute('width', 600);
                 list.appendChild(img);
               }
               break;
