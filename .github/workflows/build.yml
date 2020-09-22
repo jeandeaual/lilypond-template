@@ -12,32 +12,42 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - name: Make the output directories
-        run: mkdir a4 letter svg
+        run: mkdir -p "build/{a4,letter,svg}"
       - name: Build
         uses: docker://jeandeaual/lilypond:2.18.2
         with:
-          args: lilypond -dno-point-and-click -dembed-source-code -dmidi-extension="midi" -dpaper-size=\"a4\" -o a4 test.ly
-      - name: Build
+          args: lilypond -dno-point-and-click -dembed-source-code -dmidi-extension="midi" -dpaper-size=\"a4\" -o build/a4 test.ly
+      - name: Build A4 PDF
         uses: docker://jeandeaual/lilypond:latest
         with:
-          args: lilypond -dno-point-and-click -dembed-source-code -dmidi-extension="midi" -dpaper-size=\"letter\" -o letter test.ly
-      - name: Build
+          args: lilypond -dno-point-and-click -dembed-source-code -dmidi-extension="midi" -dpaper-size=\"letter\" -o build/letter test.ly
+      - name: Build Letter PDF
         uses: docker://jeandeaual/lilypond:latest
         with:
-          args: lilypond --svg -dno-point-and-click -dmidi-extension="midi" -dpaper-size=\"a4\" -o svg test.ly
+          args: lilypond --svg -dno-point-and-click -dmidi-extension="midi" -dpaper-size=\"a4\" -o build/svg test.ly
       - name: Upload A4 artifact
         uses: actions/upload-artifact@v1.0.0
         with:
           name: a4
-          path: a4
+          path: build/a4
       - name: Upload Letter artifact
         uses: actions/upload-artifact@v1.0.0
         with:
           name: letter
-          path: letter
+          path: build/letter
       - name: Upload SVG artifact
         uses: actions/upload-artifact@v1.0.0
         with:
           name: svg
-          path: svg
+          path: build/svg
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.6.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          CLEAN: true
+          # SINGLE_COMMIT: true
