@@ -15,7 +15,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Make the output directories
-        run: mkdir -p "build/{a4,letter,svg}"
+        run: mkdir -p build/{a4,letter,svg}
       - name: Build
         uses: docker://jeandeaual/lilypond:2.18.2
         with:
