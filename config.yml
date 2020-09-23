@@ -2,10 +2,10 @@
 # See https://mikefarah.gitbook.io/yq/commands/write-update#using-a-script-file-to-update
 - command: update
   path: title
-  value: Test
-- command: update
+  value: Testly
+# Use the short description from the GitHub project
+- command: delete
   path: description
-  value: Test partition.
 - command: update
   path: baseurl
   value: /testly
