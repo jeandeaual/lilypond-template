@@ -1,14 +1,13 @@
-title: GitHub Pages LilyPond template
-description: >-
-  Template used for LilyPond projects on GitHub Pages.
-url: ""
-repository: jeandeaual/lilypond-jekyll-template
+title: Test
+description: Test partition.
+baseurl: testly
+url: https://jeandeaual.github.io
+repository: jeandeaual/testly
 lang: en-US
-
+show_downloads: true
 # Build settings
 theme: jekyll-theme-minimal
 plugins: []
-
 defaults:
   - scope:
       path: "a4"
