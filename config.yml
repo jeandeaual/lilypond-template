@@ -1,5 +1,15 @@
-title: Test
-description: Test partition.
-baseurl: testly
-url: https://jeandeaual.github.io
-repository: jeandeaual/testly
+- command: update
+  path: title
+  value: Test
+- command: update
+  path: description
+  value: Test partition.
+- command: update
+  path: baseurl
+  value: testly
+- command: update
+  path: url
+  value: https://jeandeaual.github.io
+- command: update
+  path: repository
+  value: jeandeaual/testly
