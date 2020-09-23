@@ -62,9 +62,9 @@ jobs:
           name: midi-${{ steps.slug.outputs.sha7 }}
           path: build/midi
       - name: Download yq
-        run: wget https://github.com/mikefarah/yq/releases/download/3.4.0/yq_linux_amd64 -O ~/bin/yq && chmod +x ~/bin/yq
+        run: mkdir -p ~/bin && wget https://github.com/mikefarah/yq/releases/download/3.4.0/yq_linux_amd64 -O ~/bin/yq && chmod +x ~/bin/yq
       - name: Update the Jekyll config
-        run: yq w -i -s config.yml build/_config.yml
+        run: ~/bin/yq w -i -s config.yml build/_config.yml
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.6.1
         with:
