@@ -37,26 +37,29 @@ jobs:
       - name: Remove extra MIDI files
         run: |
           cp build/a4/*.midi build/midi/
-          find . -type d -name midi -prune -false -o -type f -name '*.midi' -delete
+          find . -depth -maxdepth 3 -regex '.*\/midi\/.*' -prune -o -type f -name '*.midi' -delete
+      - name: Get short SHA
+        id: slug
+        run: echo "::set-output name=sha7::$(echo ${GITHUB_SHA} | cut -c1-7)"
       - name: Upload A4 artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: a4
+          name: a4-${{ steps.slug.outputs.sha7 }}
           path: build/a4
       - name: Upload Letter artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: letter
+          name: letter-${{ steps.slug.outputs.sha7 }}
           path: build/letter
       - name: Upload SVG artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: svg
+          name: svg-${{ steps.slug.outputs.sha7 }}
           path: build/svg
       - name: Upload MIDI artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: midi
+          name: midi-${{ steps.slug.outputs.sha7 }}
           path: build/midi
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.6.1
