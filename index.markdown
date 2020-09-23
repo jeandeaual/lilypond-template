@@ -12,27 +12,27 @@ layout: default
 {% if a4_files != empty %}
 ## A4
 {% for file in a4_files %}
-* [{{ file.name }}]({{ file.path }})
+* [{{ file.name }}]({{ file.path | relative_url }})
 {% endfor %}
 {% endif %}
 
 {% if letter_files != empty %}
 ## Letter
 {% for file in letter_files %}
-* [{{ file.name }}]({{ file.path }})
+* [{{ file.name }}]({{ file.path | relative_url }})
 {% endfor %}
 {% endif %}
 
 {% if midi_files != empty %}
 ## MIDI
 {% for file in midi_files %}
-* [{{ file.name }}]({{ file.path }})
+* [{{ file.name }}]({{ file.path | relative_url }})
 {% endfor %}
 {% endif %}
 
 {% if svg_files != empty %}
 # Preview
 {% for file in svg_files %}
-![{{ file.basename }}]({{ file.path }})
+![{{ file.basename }}]({{ file.path | relative_url }})
 {% endfor %}
 {% endif %}
