@@ -36,3 +36,5 @@ layout: default
 ![{{ file.basename }}]({{ file.path | relative_url }})
 {% endfor %}
 {% endif %}
+
+Last update on {{ site.time | date: "%Y-%m-%d %H:%M" }}.
