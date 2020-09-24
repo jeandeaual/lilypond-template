@@ -22,7 +22,7 @@ jobs:
           repository: jeandeaual/lilypond-jekyll-template
       - name: Make the output directories
         run: mkdir -p build/{a4,letter,svg,midi}
-      - name: Make sure it builds with the version specified the source file(s)
+      - name: Make sure it builds with the version specified in the source file(s)
         uses: docker://jeandeaual/lilypond:2.20.0
         with:
           args: lilypond main.ly
