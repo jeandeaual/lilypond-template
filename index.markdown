@@ -37,4 +37,4 @@ layout: default
 {% endfor %}
 {% endif %}
 
-Last update on {{ site.time | date: "%Y-%m-%d %H:%M" }}.
+Last update on {{ site.time | date: "%Y-%m-%d %H:%M UTC" }}.
