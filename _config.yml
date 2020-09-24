@@ -1,7 +1,7 @@
-title: Testly
-baseurl: /testly
+title: LilyPond Template
+baseurl: /lilypond-template
 url: https://jeandeaual.github.io
-repository: jeandeaual/testly
+repository: jeandeaual/lilypond-template
 lang: en-US
 show_downloads: false
 # Build settings
