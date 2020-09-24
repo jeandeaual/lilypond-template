@@ -2,16 +2,16 @@
 # See https://mikefarah.gitbook.io/yq/commands/write-update#using-a-script-file-to-update
 - command: update
   path: title
-  value: Testly
+  value: LilyPond Template
 # Use the short description from the GitHub project
 - command: delete
   path: description
 - command: update
   path: baseurl
-  value: /testly
+  value: /lilypond-template
 - command: update
   path: url
   value: https://jeandeaual.github.io
 - command: update
   path: repository
-  value: jeandeaual/testly
+  value: jeandeaual/lilypond-template
