@@ -2,7 +2,7 @@
     "name": "LilyPond",
     "build": {
         "dockerfile": "Dockerfile",
-        // Update 'VARIANT' to pick an LilyPond version: 2.18, 2.20, 2.21.7, etc.
+        // Update 'VARIANT' to pick an LilyPond version: 2.18.2, 2.20.0, 2.21.7, etc.
         "args": { "VARIANT": "devel-fonts" }
     },
     // Add the IDs of extensions you want installed when the container is created.
