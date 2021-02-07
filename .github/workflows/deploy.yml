@@ -19,9 +19,6 @@ jobs:
           persist-credentials: false
           path: build
           repository: jeandeaual/lilypond-jekyll-template
-      # Output folders (a4, letter and midi) are included in .gitignore, preventing them to be commited to the gh_pages branch
-      - name: Remove the .gitignore file
-        run: rm build/.gitignore
       - name: Make the output directories
         run: mkdir -p build/{a4,letter,svg,midi}
       - name: Make sure it builds with the version specified in the source file(s)
@@ -71,10 +68,23 @@ jobs:
         uses: mikefarah/yq@3.4.1
         with:
           cmd: yq w -i -s config.yml build/_config.yml
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+      - name: Install the Ruby dependencies
+        run: |
+          cd build
+          bundle config set without 'development'
+          bundle install --jobs 4 --retry 3
+      - name: Build the Jekyll site
+        run: cd build && bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: build
+          FOLDER: build/_site
           PRESERVE: true
