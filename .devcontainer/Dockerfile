@@ -1,7 +1,7 @@
 # See here for image contents: https://github.com/jeandeaual/docker-lilypond/blob/master/Dockerfile
 
-# [Choice] LilyPond version: 2.18.2, 2.20.0, 2.21.7, etc.
-ARG VARIANT="2.20.0"
+# [Choice] LilyPond version: 2.22.0, 2.23.0, etc.
+ARG VARIANT="2.22.0"
 FROM jeandeaual/lilypond:${VARIANT}
 
 ARG USERNAME=vscode
@@ -10,7 +10,7 @@ ARG USER_GID=$USER_UID
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y upgrade \
-    && apt-get -y --no-install-recommends install sudo git vim \
+    && apt-get -y --no-install-recommends install sudo git vim timidity fluid-soundfont-gm fluid-soundfont-gs \
     && rm -rf /var/lib/apt/lists/*
 
 # https://github.com/lhl2617/VSLilyPond/blob/master/docs/INSTALL.md#python-ly-setup-guide-required-for-formatting

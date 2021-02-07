@@ -2,11 +2,14 @@
     "name": "LilyPond",
     "build": {
         "dockerfile": "Dockerfile",
-        // Update 'VARIANT' to pick an LilyPond version: 2.18.2, 2.20.0, 2.21.7, etc.
-        "args": { "VARIANT": "devel-fonts" }
+        // Update 'VARIANT' to pick an LilyPond version: 2.22.0, 2.23.0, etc.
+        "args": { "VARIANT": "devel-fonts-ly2video" }
     },
+    "runArgs": [
+        // Map sound devices (doesn't work on Windows, see https://github.com/microsoft/WSL/issues/689)
+        // "--device=/dev/snd:/dev/snd"
+    ],
     // Add the IDs of extensions you want installed when the container is created.
-    // Note that some extensions may not work in Alpine Linux. See https://aka.ms/vscode-remote/linux.
     "extensions": [
         "lhl2617.vslilypond",
         "tomoki1207.pdf"
