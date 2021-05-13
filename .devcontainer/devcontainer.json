@@ -11,8 +11,7 @@
     ],
     // Add the IDs of extensions you want installed when the container is created.
     "extensions": [
-        "lhl2617.vslilypond",
-        "tomoki1207.pdf"
+        "lhl2617.vslilypond"
     ],
     // Connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
     "remoteUser": "vscode"
