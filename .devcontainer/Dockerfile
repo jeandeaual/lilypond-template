@@ -21,3 +21,5 @@ RUN useradd -s /bin/bash --uid "${USER_UID}" --gid "${USER_GID}" --groups sudo -
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 RUN printf '\nexport LANG="C"\nexport LANGUAGE="C"\nexport LC_ALL="C"\n' >> "/home/${USERNAME}/.bashrc"
+# Use python-ly installed previously instead of the one bundled with VSLilyPond
+RUN printf '{\n    "lilypondFormatter.general.useBundledPythonLy": false\n}\n' >> "/home/${USERNAME}/.vscode-server/data/Machine/settings.json"
