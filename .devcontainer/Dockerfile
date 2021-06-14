@@ -13,9 +13,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y --no-install-recommends install sudo git vim timidity fluid-soundfont-gm fluid-soundfont-gs \
     && rm -rf /var/lib/apt/lists/*
 
-# https://github.com/lhl2617/VSLilyPond/blob/master/docs/INSTALL.md#python-ly-setup-guide-required-for-formatting
-RUN python -m pip install python-ly
-
 RUN groupadd --gid "${USER_GID}" "${USERNAME}"
 RUN useradd -s /bin/bash --uid "${USER_UID}" --gid "${USER_GID}" --groups sudo --create-home "${USERNAME}"
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
